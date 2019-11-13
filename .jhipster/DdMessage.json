@@ -1,0 +1,51 @@
+{
+    "name": "DdMessage",
+    "fields": [
+        {
+            "fieldName": "receivingDepartment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "receivingUser",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "json",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "DdMessageType",
+            "fieldValues": "ActionCard,Markdown,Oa,Link,File"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "MessageStatus",
+            "fieldValues": "SentSuccessfully,NotSentYet"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "processInstance",
+            "otherEntityRelationshipName": "ddMessage",
+            "relationshipName": "processInstance",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191113095051",
+    "entityTableName": "dd_message",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mpPi"
+}

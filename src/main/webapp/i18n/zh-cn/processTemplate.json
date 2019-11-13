@@ -1,0 +1,24 @@
+{
+  "piApp": {
+    "processTemplate": {
+      "home": {
+        "title": "Process Templates",
+        "createLabel": "创建新 Process Template",
+        "createOrEditLabel": "创建或编辑 Process Template",
+        "notFound": "No Process Templates found"
+      },
+      "created": "Process Template {{ param }} 创建成功",
+      "updated": "Process Template {{ param }} 更新成功",
+      "deleted": "Process Template {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Process Template {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Process Template"
+      },
+      "name": "Name",
+      "processCode": "Process Code",
+      "processInstance": "Process Instance"
+    }
+  }
+}

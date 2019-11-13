@@ -1,0 +1,99 @@
+{
+    "name": "ProcessInstance",
+    "fields": [
+        {
+            "fieldName": "attachedProcessInstanceIds",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bizAction",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "businessId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "finishTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "formComponentValues",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "operationRecords",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "originatorDeptId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "originatorDeptName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "originatorUserid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "result",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tasks",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "processInstanceEvent",
+            "otherEntityRelationshipName": "processInstance",
+            "relationshipName": "processInstanceEvent"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "formComponentValues",
+            "otherEntityRelationshipName": "processInstance",
+            "relationshipName": "formComponentValues"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "ddMessage",
+            "otherEntityRelationshipName": "processInstance",
+            "relationshipName": "ddMessage"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "processTemplate",
+            "otherEntityRelationshipName": "processInstance",
+            "relationshipName": "processTemplate",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191113095049",
+    "entityTableName": "process_instance",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mpPi"
+}

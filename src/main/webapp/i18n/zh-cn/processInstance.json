@@ -1,0 +1,39 @@
+{
+  "piApp": {
+    "processInstance": {
+      "home": {
+        "title": "Process Instances",
+        "createLabel": "创建新 Process Instance",
+        "createOrEditLabel": "创建或编辑 Process Instance",
+        "notFound": "No Process Instances found"
+      },
+      "created": "Process Instance {{ param }} 创建成功",
+      "updated": "Process Instance {{ param }} 更新成功",
+      "deleted": "Process Instance {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Process Instance {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Process Instance"
+      },
+      "attachedProcessInstanceIds": "Attached Process Instance Ids",
+      "bizAction": "Biz Action",
+      "businessId": "Business Id",
+      "createTime": "Create Time",
+      "finishTime": "Finish Time",
+      "formComponentValues": "Form Component Values",
+      "operationRecords": "Operation Records",
+      "originatorDeptId": "Originator Dept Id",
+      "originatorDeptName": "Originator Dept Name",
+      "originatorUserid": "Originator Userid",
+      "result": "Result",
+      "status": "Status",
+      "tasks": "Tasks",
+      "title": "Title",
+      "processInstanceEvent": "Process Instance Event",
+      "formComponentValues": "Form Component Values",
+      "ddMessage": "Dd Message",
+      "processTemplate": "Process Template"
+    }
+  }
+}

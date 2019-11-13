@@ -1,0 +1,73 @@
+{
+    "name": "ProcessInstanceEvent",
+    "fields": [
+        {
+            "fieldName": "finishTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "corpId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "eventType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "businessId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "result",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createTime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "processCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bizCategoryId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "staffId",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "processInstance",
+            "otherEntityRelationshipName": "processInstanceEvent",
+            "relationshipName": "processInstance",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191113095048",
+    "entityTableName": "process_instance_event",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mpPi"
+}

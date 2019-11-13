@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="formComponentValues">
+            <h2><span jhiTranslate="piApp.formComponentValues.detail.title">Form Component Values</span> {{formComponentValues.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="piApp.formComponentValues.componentType">Component Type</span></dt>
+                <dd>
+                    <span>{{formComponentValues.componentType}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.formComponentValues.value">Value</span></dt>
+                <dd>
+                    <span>{{formComponentValues.value}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.formComponentValues.name">Name</span></dt>
+                <dd>
+                    <span>{{formComponentValues.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.formComponentValues.extValue">Ext Value</span></dt>
+                <dd>
+                    <span>{{formComponentValues.extValue}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.formComponentValues.processInstance">Process Instance</span></dt>
+                <dd>
+                    <div *ngIf="formComponentValues.processInstance">
+                        <a [routerLink]="['/process-instance-mp-pi', formComponentValues.processInstance?.id, 'view']">{{formComponentValues.processInstance?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/form-component-values-mp-pi', formComponentValues.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

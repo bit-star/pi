@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="piApp.ddMessage.home.title">Dd Messages</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dd-message-mp-pi" [routerLink]="['/dd-message-mp-pi/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="piApp.ddMessage.home.createLabel">
+            Create a new Dd Message
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="ddMessages?.length === 0">
+        <span jhiTranslate="piApp.ddMessage.home.notFound">No ddMessages found</span>
+    </div>
+    <div class="table-responsive" *ngIf="ddMessages?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="receivingDepartment"><span jhiTranslate="piApp.ddMessage.receivingDepartment">Receiving Department</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="receivingUser"><span jhiTranslate="piApp.ddMessage.receivingUser">Receiving User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="title"><span jhiTranslate="piApp.ddMessage.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="json"><span jhiTranslate="piApp.ddMessage.json">Json</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="type"><span jhiTranslate="piApp.ddMessage.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="status"><span jhiTranslate="piApp.ddMessage.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="processInstance.id"><span jhiTranslate="piApp.ddMessage.processInstance">Process Instance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ddMessage of ddMessages ;trackBy: trackId">
+                <td><a [routerLink]="['/dd-message-mp-pi', ddMessage.id, 'view' ]">{{ddMessage.id}}</a></td>
+                <td>{{ddMessage.receivingDepartment}}</td>
+                <td>{{ddMessage.receivingUser}}</td>
+                <td>{{ddMessage.title}}</td>
+                <td>{{ddMessage.json}}</td>
+                <td jhiTranslate="{{'piApp.DdMessageType.' + ddMessage.type}}">{{ddMessage.type}}</td>
+                <td jhiTranslate="{{'piApp.MessageStatus.' + ddMessage.status}}">{{ddMessage.status}}</td>
+                <td>
+                    <div *ngIf="ddMessage.processInstance">
+                        <a [routerLink]="['/process-instance-mp-pi', ddMessage.processInstance?.id, 'view' ]" >{{ddMessage.processInstance?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/dd-message-mp-pi', ddMessage.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/dd-message-mp-pi', ddMessage.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/dd-message-mp-pi', { outlets: { popup: ddMessage.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="ddMessages?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

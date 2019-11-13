@@ -1,0 +1,91 @@
+
+
+entity ProcessTemplate {
+	name String,
+    processCode String
+}
+
+
+
+entity ProcessInstanceEvent {
+    finishTime Instant,
+  	corpId String,
+    eventType String,
+    businessId String,
+    title String,
+    type String,
+    url String,
+    result String,
+ 	createTime String,
+    processCode String,
+    bizCategoryId String,
+    staffId String
+}
+
+entity ProcessInstance{
+	attachedProcessInstanceIds String,
+    bizAction String,
+    businessId String,
+    createTime Instant,
+    finishTime Instant,
+    formComponentValues String,
+    operationRecords String,
+    originatorDeptId String,
+    originatorDeptName String,
+    originatorUserid String,
+    result String,
+    status String,
+    tasks String,
+    title String
+}
+
+entity  FormComponentValues{
+	componentType String,
+    id String,
+    value String,
+    name String,
+    extValue String
+}
+
+entity DdMessage {
+    receivingDepartment String,
+    receivingUser String,
+    title String,
+	json String,
+    type DdMessageType,
+    status MessageStatus
+}
+
+enum DdMessageType {
+	ActionCard, Markdown, Oa, Link, File 
+}
+
+enum MessageStatus {
+	 SentSuccessfully , NotSentYet
+}
+
+
+
+
+
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	ProcessTemplate to ProcessInstance,
+	ProcessInstance  to ProcessInstanceEvent,
+	ProcessInstance to FormComponentValues,
+    ProcessInstance to DdMessage
+}
+
+// Set pagination options
+paginate * with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service * with serviceClass
+
+// Set an angular suffix
+angularSuffix * with mpPi

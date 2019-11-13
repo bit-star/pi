@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="processInstanceEvent">
+            <h2><span jhiTranslate="piApp.processInstanceEvent.detail.title">Process Instance Event</span> {{processInstanceEvent.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="piApp.processInstanceEvent.finishTime">Finish Time</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.finishTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.corpId">Corp Id</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.corpId}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.eventType">Event Type</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.eventType}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.businessId">Business Id</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.businessId}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.title">Title</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.type">Type</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.url">Url</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.url}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.result">Result</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.result}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.createTime">Create Time</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.createTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.processCode">Process Code</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.processCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.bizCategoryId">Biz Category Id</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.bizCategoryId}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.staffId">Staff Id</span></dt>
+                <dd>
+                    <span>{{processInstanceEvent.staffId}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstanceEvent.processInstance">Process Instance</span></dt>
+                <dd>
+                    <div *ngIf="processInstanceEvent.processInstance">
+                        <a [routerLink]="['/process-instance-mp-pi', processInstanceEvent.processInstance?.id, 'view']">{{processInstanceEvent.processInstance?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/process-instance-event-mp-pi', processInstanceEvent.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

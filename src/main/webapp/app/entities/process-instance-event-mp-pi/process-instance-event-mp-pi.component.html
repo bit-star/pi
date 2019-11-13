@@ -1,0 +1,94 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="piApp.processInstanceEvent.home.title">Process Instance Events</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-process-instance-event-mp-pi" [routerLink]="['/process-instance-event-mp-pi/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="piApp.processInstanceEvent.home.createLabel">
+            Create a new Process Instance Event
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="processInstanceEvents?.length === 0">
+        <span jhiTranslate="piApp.processInstanceEvent.home.notFound">No processInstanceEvents found</span>
+    </div>
+    <div class="table-responsive" *ngIf="processInstanceEvents?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="finishTime"><span jhiTranslate="piApp.processInstanceEvent.finishTime">Finish Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="corpId"><span jhiTranslate="piApp.processInstanceEvent.corpId">Corp Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="eventType"><span jhiTranslate="piApp.processInstanceEvent.eventType">Event Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="businessId"><span jhiTranslate="piApp.processInstanceEvent.businessId">Business Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="title"><span jhiTranslate="piApp.processInstanceEvent.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="type"><span jhiTranslate="piApp.processInstanceEvent.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="url"><span jhiTranslate="piApp.processInstanceEvent.url">Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="result"><span jhiTranslate="piApp.processInstanceEvent.result">Result</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createTime"><span jhiTranslate="piApp.processInstanceEvent.createTime">Create Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="processCode"><span jhiTranslate="piApp.processInstanceEvent.processCode">Process Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="bizCategoryId"><span jhiTranslate="piApp.processInstanceEvent.bizCategoryId">Biz Category Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="staffId"><span jhiTranslate="piApp.processInstanceEvent.staffId">Staff Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="processInstance.id"><span jhiTranslate="piApp.processInstanceEvent.processInstance">Process Instance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let processInstanceEvent of processInstanceEvents ;trackBy: trackId">
+                <td><a [routerLink]="['/process-instance-event-mp-pi', processInstanceEvent.id, 'view' ]">{{processInstanceEvent.id}}</a></td>
+                <td>{{processInstanceEvent.finishTime | date:'medium'}}</td>
+                <td>{{processInstanceEvent.corpId}}</td>
+                <td>{{processInstanceEvent.eventType}}</td>
+                <td>{{processInstanceEvent.businessId}}</td>
+                <td>{{processInstanceEvent.title}}</td>
+                <td>{{processInstanceEvent.type}}</td>
+                <td>{{processInstanceEvent.url}}</td>
+                <td>{{processInstanceEvent.result}}</td>
+                <td>{{processInstanceEvent.createTime}}</td>
+                <td>{{processInstanceEvent.processCode}}</td>
+                <td>{{processInstanceEvent.bizCategoryId}}</td>
+                <td>{{processInstanceEvent.staffId}}</td>
+                <td>
+                    <div *ngIf="processInstanceEvent.processInstance">
+                        <a [routerLink]="['/process-instance-mp-pi', processInstanceEvent.processInstance?.id, 'view' ]" >{{processInstanceEvent.processInstance?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/process-instance-event-mp-pi', processInstanceEvent.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/process-instance-event-mp-pi', processInstanceEvent.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/process-instance-event-mp-pi', { outlets: { popup: processInstanceEvent.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="processInstanceEvents?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

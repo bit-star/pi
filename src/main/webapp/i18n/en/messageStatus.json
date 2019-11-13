@@ -1,0 +1,9 @@
+{
+  "piApp": {
+    "MessageStatus": {
+      "null": "",
+      "SentSuccessfully": "SentSuccessfully",
+      "NotSentYet": "NotSentYet"
+    }
+  }
+}

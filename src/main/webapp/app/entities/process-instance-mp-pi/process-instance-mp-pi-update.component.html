@@ -1,0 +1,103 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-process-instance-mp-pi-heading" jhiTranslate="piApp.processInstance.home.createOrEditLabel">Create or edit a Process Instance</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.attachedProcessInstanceIds" for="field_attachedProcessInstanceIds">Attached Process Instance Ids</label>
+                    <input type="text" class="form-control" name="attachedProcessInstanceIds" id="field_attachedProcessInstanceIds"
+                           formControlName="attachedProcessInstanceIds"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.bizAction" for="field_bizAction">Biz Action</label>
+                    <input type="text" class="form-control" name="bizAction" id="field_bizAction"
+                           formControlName="bizAction"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.businessId" for="field_businessId">Business Id</label>
+                    <input type="text" class="form-control" name="businessId" id="field_businessId"
+                           formControlName="businessId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.createTime" for="field_createTime">Create Time</label>
+                    <div class="d-flex">
+                        <input id="field_createTime" type="datetime-local" class="form-control" name="createTime" formControlName="createTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.finishTime" for="field_finishTime">Finish Time</label>
+                    <div class="d-flex">
+                        <input id="field_finishTime" type="datetime-local" class="form-control" name="finishTime" formControlName="finishTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.formComponentValues" for="field_formComponentValues">Form Component Values</label>
+                    <input type="text" class="form-control" name="formComponentValues" id="field_formComponentValues"
+                           formControlName="formComponentValues"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.operationRecords" for="field_operationRecords">Operation Records</label>
+                    <input type="text" class="form-control" name="operationRecords" id="field_operationRecords"
+                           formControlName="operationRecords"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.originatorDeptId" for="field_originatorDeptId">Originator Dept Id</label>
+                    <input type="text" class="form-control" name="originatorDeptId" id="field_originatorDeptId"
+                           formControlName="originatorDeptId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.originatorDeptName" for="field_originatorDeptName">Originator Dept Name</label>
+                    <input type="text" class="form-control" name="originatorDeptName" id="field_originatorDeptName"
+                           formControlName="originatorDeptName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.originatorUserid" for="field_originatorUserid">Originator Userid</label>
+                    <input type="text" class="form-control" name="originatorUserid" id="field_originatorUserid"
+                           formControlName="originatorUserid"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.result" for="field_result">Result</label>
+                    <input type="text" class="form-control" name="result" id="field_result"
+                           formControlName="result"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.status" for="field_status">Status</label>
+                    <input type="text" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.tasks" for="field_tasks">Tasks</label>
+                    <input type="text" class="form-control" name="tasks" id="field_tasks"
+                           formControlName="tasks"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                           formControlName="title"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.processInstance.processTemplate" for="field_processTemplate">Process Template</label>
+                    <select class="form-control" id="field_processTemplate" name="processTemplate" formControlName="processTemplate">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="processTemplateOption.id === editForm.get('processTemplate').value?.id ? editForm.get('processTemplate').value : processTemplateOption" *ngFor="let processTemplateOption of processtemplates; trackBy: trackProcessTemplateById">{{processTemplateOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

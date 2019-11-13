@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="processInstance">
+            <h2><span jhiTranslate="piApp.processInstance.detail.title">Process Instance</span> {{processInstance.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="piApp.processInstance.attachedProcessInstanceIds">Attached Process Instance Ids</span></dt>
+                <dd>
+                    <span>{{processInstance.attachedProcessInstanceIds}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.bizAction">Biz Action</span></dt>
+                <dd>
+                    <span>{{processInstance.bizAction}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.businessId">Business Id</span></dt>
+                <dd>
+                    <span>{{processInstance.businessId}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.createTime">Create Time</span></dt>
+                <dd>
+                    <span>{{processInstance.createTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.finishTime">Finish Time</span></dt>
+                <dd>
+                    <span>{{processInstance.finishTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.formComponentValues">Form Component Values</span></dt>
+                <dd>
+                    <span>{{processInstance.formComponentValues}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.operationRecords">Operation Records</span></dt>
+                <dd>
+                    <span>{{processInstance.operationRecords}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.originatorDeptId">Originator Dept Id</span></dt>
+                <dd>
+                    <span>{{processInstance.originatorDeptId}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.originatorDeptName">Originator Dept Name</span></dt>
+                <dd>
+                    <span>{{processInstance.originatorDeptName}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.originatorUserid">Originator Userid</span></dt>
+                <dd>
+                    <span>{{processInstance.originatorUserid}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.result">Result</span></dt>
+                <dd>
+                    <span>{{processInstance.result}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.status">Status</span></dt>
+                <dd>
+                    <span>{{processInstance.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.tasks">Tasks</span></dt>
+                <dd>
+                    <span>{{processInstance.tasks}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.title">Title</span></dt>
+                <dd>
+                    <span>{{processInstance.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processInstance.processTemplate">Process Template</span></dt>
+                <dd>
+                    <div *ngIf="processInstance.processTemplate">
+                        <a [routerLink]="['/process-template-mp-pi', processInstance.processTemplate?.id, 'view']">{{processInstance.processTemplate?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/process-instance-mp-pi', processInstance.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
