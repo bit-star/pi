@@ -1,0 +1,41 @@
+{
+    "name": "FormComponentValues",
+    "fields": [
+        {
+            "fieldName": "componentType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "extValue",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "processInstance",
+            "otherEntityRelationshipName": "formComponentValues",
+            "relationshipName": "processInstance",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191113095050",
+    "entityTableName": "form_component_values",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mpPi"
+}

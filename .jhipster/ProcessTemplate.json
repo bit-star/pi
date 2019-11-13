@@ -1,0 +1,32 @@
+{
+    "name": "ProcessTemplate",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "processCode",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "processInstance",
+            "otherEntityRelationshipName": "processTemplate",
+            "relationshipName": "processInstance"
+        }
+    ],
+    "changelogDate": "20191113095047",
+    "entityTableName": "process_template",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mpPi"
+}

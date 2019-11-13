@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="processTemplate">
+            <h2><span jhiTranslate="piApp.processTemplate.detail.title">Process Template</span> {{processTemplate.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="piApp.processTemplate.name">Name</span></dt>
+                <dd>
+                    <span>{{processTemplate.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processTemplate.processCode">Process Code</span></dt>
+                <dd>
+                    <span>{{processTemplate.processCode}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/process-template-mp-pi', processTemplate.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

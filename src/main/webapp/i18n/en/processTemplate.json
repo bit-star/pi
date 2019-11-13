@@ -1,0 +1,24 @@
+{
+  "piApp": {
+    "processTemplate": {
+      "home": {
+        "title": "Process Templates",
+        "createLabel": "Create a new Process Template",
+        "createOrEditLabel": "Create or edit a Process Template",
+        "notFound": "No Process Templates found"
+      },
+      "created": "A new Process Template is created with identifier {{ param }}",
+      "updated": "A Process Template is updated with identifier {{ param }}",
+      "deleted": "A Process Template is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Process Template {{ id }}?"
+      },
+      "detail": {
+        "title": "Process Template"
+      },
+      "name": "Name",
+      "processCode": "Process Code",
+      "processInstance": "Process Instance"
+    }
+  }
+}

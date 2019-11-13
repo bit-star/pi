@@ -42,6 +42,15 @@ public class CacheConfiguration {
             createCache(cm, com.lazulite.pi.domain.User.class.getName());
             createCache(cm, com.lazulite.pi.domain.Authority.class.getName());
             createCache(cm, com.lazulite.pi.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.lazulite.pi.domain.ProcessTemplate.class.getName());
+            createCache(cm, com.lazulite.pi.domain.ProcessTemplate.class.getName() + ".processInstances");
+            createCache(cm, com.lazulite.pi.domain.ProcessInstanceEvent.class.getName());
+            createCache(cm, com.lazulite.pi.domain.ProcessInstance.class.getName());
+            createCache(cm, com.lazulite.pi.domain.ProcessInstance.class.getName() + ".processInstanceEvents");
+            createCache(cm, com.lazulite.pi.domain.ProcessInstance.class.getName() + ".formComponentValues");
+            createCache(cm, com.lazulite.pi.domain.ProcessInstance.class.getName() + ".ddMessages");
+            createCache(cm, com.lazulite.pi.domain.FormComponentValues.class.getName());
+            createCache(cm, com.lazulite.pi.domain.DdMessage.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

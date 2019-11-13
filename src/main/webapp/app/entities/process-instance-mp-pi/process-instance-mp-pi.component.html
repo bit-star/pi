@@ -1,0 +1,98 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="piApp.processInstance.home.title">Process Instances</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-process-instance-mp-pi" [routerLink]="['/process-instance-mp-pi/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="piApp.processInstance.home.createLabel">
+            Create a new Process Instance
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="processInstances?.length === 0">
+        <span jhiTranslate="piApp.processInstance.home.notFound">No processInstances found</span>
+    </div>
+    <div class="table-responsive" *ngIf="processInstances?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="attachedProcessInstanceIds"><span jhiTranslate="piApp.processInstance.attachedProcessInstanceIds">Attached Process Instance Ids</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="bizAction"><span jhiTranslate="piApp.processInstance.bizAction">Biz Action</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="businessId"><span jhiTranslate="piApp.processInstance.businessId">Business Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createTime"><span jhiTranslate="piApp.processInstance.createTime">Create Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="finishTime"><span jhiTranslate="piApp.processInstance.finishTime">Finish Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="formComponentValues"><span jhiTranslate="piApp.processInstance.formComponentValues">Form Component Values</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="operationRecords"><span jhiTranslate="piApp.processInstance.operationRecords">Operation Records</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="originatorDeptId"><span jhiTranslate="piApp.processInstance.originatorDeptId">Originator Dept Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="originatorDeptName"><span jhiTranslate="piApp.processInstance.originatorDeptName">Originator Dept Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="originatorUserid"><span jhiTranslate="piApp.processInstance.originatorUserid">Originator Userid</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="result"><span jhiTranslate="piApp.processInstance.result">Result</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="status"><span jhiTranslate="piApp.processInstance.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="tasks"><span jhiTranslate="piApp.processInstance.tasks">Tasks</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="title"><span jhiTranslate="piApp.processInstance.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="processTemplate.id"><span jhiTranslate="piApp.processInstance.processTemplate">Process Template</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let processInstance of processInstances ;trackBy: trackId">
+                <td><a [routerLink]="['/process-instance-mp-pi', processInstance.id, 'view' ]">{{processInstance.id}}</a></td>
+                <td>{{processInstance.attachedProcessInstanceIds}}</td>
+                <td>{{processInstance.bizAction}}</td>
+                <td>{{processInstance.businessId}}</td>
+                <td>{{processInstance.createTime | date:'medium'}}</td>
+                <td>{{processInstance.finishTime | date:'medium'}}</td>
+                <td>{{processInstance.formComponentValues}}</td>
+                <td>{{processInstance.operationRecords}}</td>
+                <td>{{processInstance.originatorDeptId}}</td>
+                <td>{{processInstance.originatorDeptName}}</td>
+                <td>{{processInstance.originatorUserid}}</td>
+                <td>{{processInstance.result}}</td>
+                <td>{{processInstance.status}}</td>
+                <td>{{processInstance.tasks}}</td>
+                <td>{{processInstance.title}}</td>
+                <td>
+                    <div *ngIf="processInstance.processTemplate">
+                        <a [routerLink]="['/process-template-mp-pi', processInstance.processTemplate?.id, 'view' ]" >{{processInstance.processTemplate?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/process-instance-mp-pi', processInstance.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/process-instance-mp-pi', processInstance.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/process-instance-mp-pi', { outlets: { popup: processInstance.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="processInstances?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

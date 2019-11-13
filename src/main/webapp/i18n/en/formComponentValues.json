@@ -1,0 +1,26 @@
+{
+  "piApp": {
+    "formComponentValues": {
+      "home": {
+        "title": "Form Component Values",
+        "createLabel": "Create a new Form Component Values",
+        "createOrEditLabel": "Create or edit a Form Component Values",
+        "notFound": "No Form Component Values found"
+      },
+      "created": "A new Form Component Values is created with identifier {{ param }}",
+      "updated": "A Form Component Values is updated with identifier {{ param }}",
+      "deleted": "A Form Component Values is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Form Component Values {{ id }}?"
+      },
+      "detail": {
+        "title": "Form Component Values"
+      },
+      "componentType": "Component Type",
+      "value": "Value",
+      "name": "Name",
+      "extValue": "Ext Value",
+      "processInstance": "Process Instance"
+    }
+  }
+}

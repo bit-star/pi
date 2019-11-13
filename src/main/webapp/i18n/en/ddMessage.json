@@ -1,0 +1,28 @@
+{
+  "piApp": {
+    "ddMessage": {
+      "home": {
+        "title": "Dd Messages",
+        "createLabel": "Create a new Dd Message",
+        "createOrEditLabel": "Create or edit a Dd Message",
+        "notFound": "No Dd Messages found"
+      },
+      "created": "A new Dd Message is created with identifier {{ param }}",
+      "updated": "A Dd Message is updated with identifier {{ param }}",
+      "deleted": "A Dd Message is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dd Message {{ id }}?"
+      },
+      "detail": {
+        "title": "Dd Message"
+      },
+      "receivingDepartment": "Receiving Department",
+      "receivingUser": "Receiving User",
+      "title": "Title",
+      "json": "Json",
+      "type": "Type",
+      "status": "Status",
+      "processInstance": "Process Instance"
+    }
+  }
+}

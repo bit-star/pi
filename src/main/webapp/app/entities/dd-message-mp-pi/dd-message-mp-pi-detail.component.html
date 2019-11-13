@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ddMessage">
+            <h2><span jhiTranslate="piApp.ddMessage.detail.title">Dd Message</span> {{ddMessage.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="piApp.ddMessage.receivingDepartment">Receiving Department</span></dt>
+                <dd>
+                    <span>{{ddMessage.receivingDepartment}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.ddMessage.receivingUser">Receiving User</span></dt>
+                <dd>
+                    <span>{{ddMessage.receivingUser}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.ddMessage.title">Title</span></dt>
+                <dd>
+                    <span>{{ddMessage.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.ddMessage.json">Json</span></dt>
+                <dd>
+                    <span>{{ddMessage.json}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.ddMessage.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'piApp.DdMessageType.' + ddMessage.type}}">{{ddMessage.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.ddMessage.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'piApp.MessageStatus.' + ddMessage.status}}">{{ddMessage.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.ddMessage.processInstance">Process Instance</span></dt>
+                <dd>
+                    <div *ngIf="ddMessage.processInstance">
+                        <a [routerLink]="['/process-instance-mp-pi', ddMessage.processInstance?.id, 'view']">{{ddMessage.processInstance?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dd-message-mp-pi', ddMessage.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

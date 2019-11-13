@@ -1,0 +1,12 @@
+{
+  "piApp": {
+    "DdMessageType": {
+      "null": "",
+      "ActionCard": "ActionCard",
+      "Markdown": "Markdown",
+      "Oa": "Oa",
+      "Link": "Link",
+      "File": "File"
+    }
+  }
+}
