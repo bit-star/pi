@@ -23,9 +23,9 @@
             <th scope="col"  jhiSortBy="receivingUser"><span jhiTranslate="piApp.ddMessage.receivingUser">Receiving User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="title"><span jhiTranslate="piApp.ddMessage.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="json"><span jhiTranslate="piApp.ddMessage.json">Json</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="sendTime"><span jhiTranslate="piApp.ddMessage.sendTime">Send Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="type"><span jhiTranslate="piApp.ddMessage.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="status"><span jhiTranslate="piApp.ddMessage.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="processInstance.id"><span jhiTranslate="piApp.ddMessage.processInstance">Process Instance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="processMsgTask.id"><span jhiTranslate="piApp.ddMessage.processMsgTask">Process Msg Task</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -36,11 +36,11 @@
                 <td>{{ddMessage.receivingUser}}</td>
                 <td>{{ddMessage.title}}</td>
                 <td>{{ddMessage.json}}</td>
+                <td>{{ddMessage.sendTime | date:'medium'}}</td>
                 <td jhiTranslate="{{'piApp.DdMessageType.' + ddMessage.type}}">{{ddMessage.type}}</td>
-                <td jhiTranslate="{{'piApp.MessageStatus.' + ddMessage.status}}">{{ddMessage.status}}</td>
                 <td>
-                    <div *ngIf="ddMessage.processInstance">
-                        <a [routerLink]="['/process-instance-mp-pi', ddMessage.processInstance?.id, 'view' ]" >{{ddMessage.processInstance?.id}}</a>
+                    <div *ngIf="ddMessage.processMsgTask">
+                        <a [routerLink]="['/process-msg-task-mp-pi', ddMessage.processMsgTask?.id, 'view' ]" >{{ddMessage.processMsgTask?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

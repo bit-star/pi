@@ -31,7 +31,7 @@
       "title": "Title",
       "processInstanceEvent": "Process Instance Event",
       "formComponentValues": "Form Component Values",
-      "ddMessage": "Dd Message",
+      "processMsgTask": "Process Msg Task",
       "processTemplate": "Process Template"
     }
   }

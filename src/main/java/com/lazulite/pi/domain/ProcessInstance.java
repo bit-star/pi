@@ -73,7 +73,7 @@ public class ProcessInstance implements Serializable {
 
     @OneToMany(mappedBy = "processInstance")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<DdMessage> ddMessages = new HashSet<>();
+    private Set<ProcessMsgTask> processMsgTasks = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties("processInstances")
@@ -307,29 +307,29 @@ public class ProcessInstance implements Serializable {
         this.formComponentValues = formComponentValues;
     }
 
-    public Set<DdMessage> getDdMessages() {
-        return ddMessages;
+    public Set<ProcessMsgTask> getProcessMsgTasks() {
+        return processMsgTasks;
     }
 
-    public ProcessInstance ddMessages(Set<DdMessage> ddMessages) {
-        this.ddMessages = ddMessages;
+    public ProcessInstance processMsgTasks(Set<ProcessMsgTask> processMsgTasks) {
+        this.processMsgTasks = processMsgTasks;
         return this;
     }
 
-    public ProcessInstance addDdMessage(DdMessage ddMessage) {
-        this.ddMessages.add(ddMessage);
-        ddMessage.setProcessInstance(this);
+    public ProcessInstance addProcessMsgTask(ProcessMsgTask processMsgTask) {
+        this.processMsgTasks.add(processMsgTask);
+        processMsgTask.setProcessInstance(this);
         return this;
     }
 
-    public ProcessInstance removeDdMessage(DdMessage ddMessage) {
-        this.ddMessages.remove(ddMessage);
-        ddMessage.setProcessInstance(null);
+    public ProcessInstance removeProcessMsgTask(ProcessMsgTask processMsgTask) {
+        this.processMsgTasks.remove(processMsgTask);
+        processMsgTask.setProcessInstance(null);
         return this;
     }
 
-    public void setDdMessages(Set<DdMessage> ddMessages) {
-        this.ddMessages = ddMessages;
+    public void setProcessMsgTasks(Set<ProcessMsgTask> processMsgTasks) {
+        this.processMsgTasks = processMsgTasks;
     }
 
     public ProcessTemplate getProcessTemplate() {

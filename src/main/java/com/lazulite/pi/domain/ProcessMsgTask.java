@@ -7,16 +7,18 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
-import com.lazulite.pi.domain.enumeration.DdMessageType;
+import com.lazulite.pi.domain.enumeration.MessageStatus;
 
 /**
- * A DdMessage.
+ * A ProcessMsgTask.
  */
 @Entity
-@Table(name = "dd_message")
+@Table(name = "process_msg_task")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class DdMessage implements Serializable {
+public class ProcessMsgTask implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -36,16 +38,20 @@ public class DdMessage implements Serializable {
     @Column(name = "json")
     private String json;
 
-    @Column(name = "send_time")
-    private Instant sendTime;
+    @Column(name = "execute_time")
+    private Instant executeTime;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    private DdMessageType type;
+    @Column(name = "status")
+    private MessageStatus status;
+
+    @OneToMany(mappedBy = "processMsgTask")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<DdMessage> ddMessages = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("ddMessages")
-    private ProcessMsgTask processMsgTask;
+    @JsonIgnoreProperties("processMsgTasks")
+    private ProcessInstance processInstance;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -60,7 +66,7 @@ public class DdMessage implements Serializable {
         return receivingDepartment;
     }
 
-    public DdMessage receivingDepartment(String receivingDepartment) {
+    public ProcessMsgTask receivingDepartment(String receivingDepartment) {
         this.receivingDepartment = receivingDepartment;
         return this;
     }
@@ -73,7 +79,7 @@ public class DdMessage implements Serializable {
         return receivingUser;
     }
 
-    public DdMessage receivingUser(String receivingUser) {
+    public ProcessMsgTask receivingUser(String receivingUser) {
         this.receivingUser = receivingUser;
         return this;
     }
@@ -86,7 +92,7 @@ public class DdMessage implements Serializable {
         return title;
     }
 
-    public DdMessage title(String title) {
+    public ProcessMsgTask title(String title) {
         this.title = title;
         return this;
     }
@@ -99,7 +105,7 @@ public class DdMessage implements Serializable {
         return json;
     }
 
-    public DdMessage json(String json) {
+    public ProcessMsgTask json(String json) {
         this.json = json;
         return this;
     }
@@ -108,43 +114,68 @@ public class DdMessage implements Serializable {
         this.json = json;
     }
 
-    public Instant getSendTime() {
-        return sendTime;
+    public Instant getExecuteTime() {
+        return executeTime;
     }
 
-    public DdMessage sendTime(Instant sendTime) {
-        this.sendTime = sendTime;
+    public ProcessMsgTask executeTime(Instant executeTime) {
+        this.executeTime = executeTime;
         return this;
     }
 
-    public void setSendTime(Instant sendTime) {
-        this.sendTime = sendTime;
+    public void setExecuteTime(Instant executeTime) {
+        this.executeTime = executeTime;
     }
 
-    public DdMessageType getType() {
-        return type;
+    public MessageStatus getStatus() {
+        return status;
     }
 
-    public DdMessage type(DdMessageType type) {
-        this.type = type;
+    public ProcessMsgTask status(MessageStatus status) {
+        this.status = status;
         return this;
     }
 
-    public void setType(DdMessageType type) {
-        this.type = type;
+    public void setStatus(MessageStatus status) {
+        this.status = status;
     }
 
-    public ProcessMsgTask getProcessMsgTask() {
-        return processMsgTask;
+    public Set<DdMessage> getDdMessages() {
+        return ddMessages;
     }
 
-    public DdMessage processMsgTask(ProcessMsgTask processMsgTask) {
-        this.processMsgTask = processMsgTask;
+    public ProcessMsgTask ddMessages(Set<DdMessage> ddMessages) {
+        this.ddMessages = ddMessages;
         return this;
     }
 
-    public void setProcessMsgTask(ProcessMsgTask processMsgTask) {
-        this.processMsgTask = processMsgTask;
+    public ProcessMsgTask addDdMessage(DdMessage ddMessage) {
+        this.ddMessages.add(ddMessage);
+        ddMessage.setProcessMsgTask(this);
+        return this;
+    }
+
+    public ProcessMsgTask removeDdMessage(DdMessage ddMessage) {
+        this.ddMessages.remove(ddMessage);
+        ddMessage.setProcessMsgTask(null);
+        return this;
+    }
+
+    public void setDdMessages(Set<DdMessage> ddMessages) {
+        this.ddMessages = ddMessages;
+    }
+
+    public ProcessInstance getProcessInstance() {
+        return processInstance;
+    }
+
+    public ProcessMsgTask processInstance(ProcessInstance processInstance) {
+        this.processInstance = processInstance;
+        return this;
+    }
+
+    public void setProcessInstance(ProcessInstance processInstance) {
+        this.processInstance = processInstance;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -153,10 +184,10 @@ public class DdMessage implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof DdMessage)) {
+        if (!(o instanceof ProcessMsgTask)) {
             return false;
         }
-        return id != null && id.equals(((DdMessage) o).id);
+        return id != null && id.equals(((ProcessMsgTask) o).id);
     }
 
     @Override
@@ -166,14 +197,14 @@ public class DdMessage implements Serializable {
 
     @Override
     public String toString() {
-        return "DdMessage{" +
+        return "ProcessMsgTask{" +
             "id=" + getId() +
             ", receivingDepartment='" + getReceivingDepartment() + "'" +
             ", receivingUser='" + getReceivingUser() + "'" +
             ", title='" + getTitle() + "'" +
             ", json='" + getJson() + "'" +
-            ", sendTime='" + getSendTime() + "'" +
-            ", type='" + getType() + "'" +
+            ", executeTime='" + getExecuteTime() + "'" +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

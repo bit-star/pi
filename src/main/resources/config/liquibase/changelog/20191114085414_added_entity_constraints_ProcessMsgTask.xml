@@ -4,15 +4,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
     <!--
-        Added the constraints for entity DdMessage.
+        Added the constraints for entity ProcessMsgTask.
     -->
-    <changeSet id="20191113095051-2" author="jhipster">
+    <changeSet id="20191114085414-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="process_msg_task_id"
-                                 baseTableName="dd_message"
-                                 constraintName="fk_dd_message_process_msg_task_id"
+        <addForeignKeyConstraint baseColumnNames="process_instance_id"
+                                 baseTableName="process_msg_task"
+                                 constraintName="fk_process_msg_task_process_instance_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="process_msg_task"/>
+                                 referencedTableName="process_instance"/>
 
     </changeSet>
 </databaseChangeLog>
