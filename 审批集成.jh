@@ -28,7 +28,6 @@ entity ProcessInstance{
     businessId String,
     createTime Instant,
     finishTime Instant,
-    formComponentValues String,
     operationRecords String,
     originatorDeptId String,
     originatorDeptName String,
