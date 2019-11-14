@@ -11,7 +11,6 @@ export interface IProcessInstanceMpPi {
   businessId?: string;
   createTime?: Moment;
   finishTime?: Moment;
-  formComponentValues?: string;
   operationRecords?: string;
   originatorDeptId?: string;
   originatorDeptName?: string;
@@ -34,7 +33,6 @@ export class ProcessInstanceMpPi implements IProcessInstanceMpPi {
     public businessId?: string,
     public createTime?: Moment,
     public finishTime?: Moment,
-    public formComponentValues?: string,
     public operationRecords?: string,
     public originatorDeptId?: string,
     public originatorDeptName?: string,

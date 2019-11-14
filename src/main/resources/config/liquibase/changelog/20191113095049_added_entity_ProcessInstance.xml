@@ -31,9 +31,6 @@
             <column name="finish_time" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="form_component_values" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="operation_records" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -91,7 +88,6 @@
             <column name="business_id" type="string"/>
             <column name="create_time" type="datetime"/>
             <column name="finish_time" type="datetime"/>
-            <column name="form_component_values" type="string"/>
             <column name="operation_records" type="string"/>
             <column name="originator_dept_id" type="string"/>
             <column name="originator_dept_name" type="string"/>

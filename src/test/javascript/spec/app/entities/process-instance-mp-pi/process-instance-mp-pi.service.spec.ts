@@ -38,7 +38,6 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
-        'AAAAAAA',
         'AAAAAAA'
       );
     });
@@ -95,7 +94,6 @@ describe('Service Tests', () => {
             businessId: 'BBBBBB',
             createTime: currentDate.format(DATE_TIME_FORMAT),
             finishTime: currentDate.format(DATE_TIME_FORMAT),
-            formComponentValues: 'BBBBBB',
             operationRecords: 'BBBBBB',
             originatorDeptId: 'BBBBBB',
             originatorDeptName: 'BBBBBB',
@@ -132,7 +130,6 @@ describe('Service Tests', () => {
             businessId: 'BBBBBB',
             createTime: currentDate.format(DATE_TIME_FORMAT),
             finishTime: currentDate.format(DATE_TIME_FORMAT),
-            formComponentValues: 'BBBBBB',
             operationRecords: 'BBBBBB',
             originatorDeptId: 'BBBBBB',
             originatorDeptName: 'BBBBBB',
