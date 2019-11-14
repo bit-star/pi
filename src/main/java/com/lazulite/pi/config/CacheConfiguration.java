@@ -51,6 +51,9 @@ public class CacheConfiguration {
             createCache(cm, com.lazulite.pi.domain.ProcessInstance.class.getName() + ".ddMessages");
             createCache(cm, com.lazulite.pi.domain.FormComponentValues.class.getName());
             createCache(cm, com.lazulite.pi.domain.DdMessage.class.getName());
+            createCache(cm, com.lazulite.pi.domain.ProcessInstance.class.getName() + ".processMsgTasks");
+            createCache(cm, com.lazulite.pi.domain.ProcessMsgTask.class.getName());
+            createCache(cm, com.lazulite.pi.domain.ProcessMsgTask.class.getName() + ".ddMessages");
             // jhipster-needle-ehcache-add-entry
         };
     }

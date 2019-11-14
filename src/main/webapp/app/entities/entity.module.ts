@@ -25,6 +25,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'dd-message-mp-pi',
         loadChildren: () => import('./dd-message-mp-pi/dd-message-mp-pi.module').then(m => m.PiDdMessageMpPiModule)
+      },
+      {
+        path: 'process-msg-task-mp-pi',
+        loadChildren: () => import('./process-msg-task-mp-pi/process-msg-task-mp-pi.module').then(m => m.PiProcessMsgTaskMpPiModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

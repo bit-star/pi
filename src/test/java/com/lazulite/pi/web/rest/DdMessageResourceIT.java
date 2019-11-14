@@ -20,6 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static com.lazulite.pi.web.rest.TestUtil.createFormattingConversionService;
@@ -29,7 +31,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.lazulite.pi.domain.enumeration.DdMessageType;
-import com.lazulite.pi.domain.enumeration.MessageStatus;
 /**
  * Integration tests for the {@link DdMessageResource} REST controller.
  */
@@ -48,11 +49,11 @@ public class DdMessageResourceIT {
     private static final String DEFAULT_JSON = "AAAAAAAAAA";
     private static final String UPDATED_JSON = "BBBBBBBBBB";
 
+    private static final Instant DEFAULT_SEND_TIME = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_SEND_TIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     private static final DdMessageType DEFAULT_TYPE = DdMessageType.ActionCard;
     private static final DdMessageType UPDATED_TYPE = DdMessageType.Markdown;
-
-    private static final MessageStatus DEFAULT_STATUS = MessageStatus.SentSuccessfully;
-    private static final MessageStatus UPDATED_STATUS = MessageStatus.NotSentYet;
 
     @Autowired
     private DdMessageRepository ddMessageRepository;
@@ -103,8 +104,8 @@ public class DdMessageResourceIT {
             .receivingUser(DEFAULT_RECEIVING_USER)
             .title(DEFAULT_TITLE)
             .json(DEFAULT_JSON)
-            .type(DEFAULT_TYPE)
-            .status(DEFAULT_STATUS);
+            .sendTime(DEFAULT_SEND_TIME)
+            .type(DEFAULT_TYPE);
         return ddMessage;
     }
     /**
@@ -119,8 +120,8 @@ public class DdMessageResourceIT {
             .receivingUser(UPDATED_RECEIVING_USER)
             .title(UPDATED_TITLE)
             .json(UPDATED_JSON)
-            .type(UPDATED_TYPE)
-            .status(UPDATED_STATUS);
+            .sendTime(UPDATED_SEND_TIME)
+            .type(UPDATED_TYPE);
         return ddMessage;
     }
 
@@ -148,8 +149,8 @@ public class DdMessageResourceIT {
         assertThat(testDdMessage.getReceivingUser()).isEqualTo(DEFAULT_RECEIVING_USER);
         assertThat(testDdMessage.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testDdMessage.getJson()).isEqualTo(DEFAULT_JSON);
+        assertThat(testDdMessage.getSendTime()).isEqualTo(DEFAULT_SEND_TIME);
         assertThat(testDdMessage.getType()).isEqualTo(DEFAULT_TYPE);
-        assertThat(testDdMessage.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -187,8 +188,8 @@ public class DdMessageResourceIT {
             .andExpect(jsonPath("$.[*].receivingUser").value(hasItem(DEFAULT_RECEIVING_USER)))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].json").value(hasItem(DEFAULT_JSON)))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
+            .andExpect(jsonPath("$.[*].sendTime").value(hasItem(DEFAULT_SEND_TIME.toString())))
+            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())));
     }
     
     @Test
@@ -206,8 +207,8 @@ public class DdMessageResourceIT {
             .andExpect(jsonPath("$.receivingUser").value(DEFAULT_RECEIVING_USER))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.json").value(DEFAULT_JSON))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
+            .andExpect(jsonPath("$.sendTime").value(DEFAULT_SEND_TIME.toString()))
+            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()));
     }
 
     @Test
@@ -235,8 +236,8 @@ public class DdMessageResourceIT {
             .receivingUser(UPDATED_RECEIVING_USER)
             .title(UPDATED_TITLE)
             .json(UPDATED_JSON)
-            .type(UPDATED_TYPE)
-            .status(UPDATED_STATUS);
+            .sendTime(UPDATED_SEND_TIME)
+            .type(UPDATED_TYPE);
 
         restDdMessageMockMvc.perform(put("/api/dd-messages")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -251,8 +252,8 @@ public class DdMessageResourceIT {
         assertThat(testDdMessage.getReceivingUser()).isEqualTo(UPDATED_RECEIVING_USER);
         assertThat(testDdMessage.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testDdMessage.getJson()).isEqualTo(UPDATED_JSON);
+        assertThat(testDdMessage.getSendTime()).isEqualTo(UPDATED_SEND_TIME);
         assertThat(testDdMessage.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testDdMessage.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test

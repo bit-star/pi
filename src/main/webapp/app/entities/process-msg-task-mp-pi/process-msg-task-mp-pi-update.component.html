@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-dd-message-mp-pi-heading" jhiTranslate="piApp.ddMessage.home.createOrEditLabel">Create or edit a Dd Message</h2>
+            <h2 id="jhi-process-msg-task-mp-pi-heading" jhiTranslate="piApp.processMsgTask.home.createOrEditLabel">Create or edit a Process Msg Task</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!editForm.get('id').value">
@@ -10,47 +10,44 @@
                         readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="piApp.ddMessage.receivingDepartment" for="field_receivingDepartment">Receiving Department</label>
+                    <label class="form-control-label" jhiTranslate="piApp.processMsgTask.receivingDepartment" for="field_receivingDepartment">Receiving Department</label>
                     <input type="text" class="form-control" name="receivingDepartment" id="field_receivingDepartment"
                            formControlName="receivingDepartment"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="piApp.ddMessage.receivingUser" for="field_receivingUser">Receiving User</label>
+                    <label class="form-control-label" jhiTranslate="piApp.processMsgTask.receivingUser" for="field_receivingUser">Receiving User</label>
                     <input type="text" class="form-control" name="receivingUser" id="field_receivingUser"
                            formControlName="receivingUser"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="piApp.ddMessage.title" for="field_title">Title</label>
+                    <label class="form-control-label" jhiTranslate="piApp.processMsgTask.title" for="field_title">Title</label>
                     <input type="text" class="form-control" name="title" id="field_title"
                            formControlName="title"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="piApp.ddMessage.json" for="field_json">Json</label>
+                    <label class="form-control-label" jhiTranslate="piApp.processMsgTask.json" for="field_json">Json</label>
                     <input type="text" class="form-control" name="json" id="field_json"
                            formControlName="json"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="piApp.ddMessage.sendTime" for="field_sendTime">Send Time</label>
+                    <label class="form-control-label" jhiTranslate="piApp.processMsgTask.executeTime" for="field_executeTime">Execute Time</label>
                     <div class="d-flex">
-                        <input id="field_sendTime" type="datetime-local" class="form-control" name="sendTime" formControlName="sendTime" placeholder="YYYY-MM-DD HH:mm"/>
+                        <input id="field_executeTime" type="datetime-local" class="form-control" name="executeTime" formControlName="executeTime" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="piApp.ddMessage.type" for="field_type">Type</label>
-                    <select class="form-control" name="type" formControlName="type" id="field_type">
-                        <option value="ActionCard">{{'piApp.DdMessageType.ActionCard' | translate}}</option>
-                        <option value="Markdown">{{'piApp.DdMessageType.Markdown' | translate}}</option>
-                        <option value="Oa">{{'piApp.DdMessageType.Oa' | translate}}</option>
-                        <option value="Link">{{'piApp.DdMessageType.Link' | translate}}</option>
-                        <option value="File">{{'piApp.DdMessageType.File' | translate}}</option>
+                    <label class="form-control-label" jhiTranslate="piApp.processMsgTask.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="SentSuccessfully">{{'piApp.MessageStatus.SentSuccessfully' | translate}}</option>
+                        <option value="NotSentYet">{{'piApp.MessageStatus.NotSentYet' | translate}}</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="piApp.ddMessage.processMsgTask" for="field_processMsgTask">Process Msg Task</label>
-                    <select class="form-control" id="field_processMsgTask" name="processMsgTask" formControlName="processMsgTask">
+                    <label class="form-control-label" jhiTranslate="piApp.processMsgTask.processInstance" for="field_processInstance">Process Instance</label>
+                    <select class="form-control" id="field_processInstance" name="processInstance" formControlName="processInstance">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="processMsgTaskOption.id === editForm.get('processMsgTask').value?.id ? editForm.get('processMsgTask').value : processMsgTaskOption" *ngFor="let processMsgTaskOption of processmsgtasks; trackBy: trackProcessMsgTaskById">{{processMsgTaskOption.id}}</option>
+                        <option [ngValue]="processInstanceOption.id === editForm.get('processInstance').value?.id ? editForm.get('processInstance').value : processInstanceOption" *ngFor="let processInstanceOption of processinstances; trackBy: trackProcessInstanceById">{{processInstanceOption.id}}</option>
                     </select>
                 </div>
             </div>

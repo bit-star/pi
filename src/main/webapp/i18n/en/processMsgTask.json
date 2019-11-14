@@ -1,0 +1,29 @@
+{
+  "piApp": {
+    "processMsgTask": {
+      "home": {
+        "title": "Process Msg Tasks",
+        "createLabel": "Create a new Process Msg Task",
+        "createOrEditLabel": "Create or edit a Process Msg Task",
+        "notFound": "No Process Msg Tasks found"
+      },
+      "created": "A new Process Msg Task is created with identifier {{ param }}",
+      "updated": "A Process Msg Task is updated with identifier {{ param }}",
+      "deleted": "A Process Msg Task is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Process Msg Task {{ id }}?"
+      },
+      "detail": {
+        "title": "Process Msg Task"
+      },
+      "receivingDepartment": "Receiving Department",
+      "receivingUser": "Receiving User",
+      "title": "Title",
+      "json": "Json",
+      "executeTime": "Execute Time",
+      "status": "Status",
+      "ddMessage": "Dd Message",
+      "processInstance": "Process Instance"
+    }
+  }
+}

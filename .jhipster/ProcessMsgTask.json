@@ -1,5 +1,5 @@
 {
-    "name": "DdMessage",
+    "name": "ProcessMsgTask",
     "fields": [
         {
             "fieldName": "receivingDepartment",
@@ -18,26 +18,32 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "sendTime",
+            "fieldName": "executeTime",
             "fieldType": "Instant"
         },
         {
-            "fieldName": "type",
-            "fieldType": "DdMessageType",
-            "fieldValues": "ActionCard,Markdown,Oa,Link,File"
+            "fieldName": "status",
+            "fieldType": "MessageStatus",
+            "fieldValues": "SentSuccessfully,NotSentYet"
         }
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "ddMessage",
+            "otherEntityRelationshipName": "processMsgTask",
+            "relationshipName": "ddMessage"
+        },
+        {
             "relationshipType": "many-to-one",
-            "otherEntityName": "processMsgTask",
-            "otherEntityRelationshipName": "ddMessage",
-            "relationshipName": "processMsgTask",
+            "otherEntityName": "processInstance",
+            "otherEntityRelationshipName": "processMsgTask",
+            "relationshipName": "processInstance",
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20191113095051",
-    "entityTableName": "dd_message",
+    "changelogDate": "20191114085414",
+    "entityTableName": "process_msg_task",
     "dto": "no",
     "pagination": "pagination",
     "service": "serviceClass",

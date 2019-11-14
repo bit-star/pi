@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
 import { IProcessInstanceEventMpPi } from 'app/shared/model/process-instance-event-mp-pi.model';
 import { IFormComponentValuesMpPi } from 'app/shared/model/form-component-values-mp-pi.model';
-import { IDdMessageMpPi } from 'app/shared/model/dd-message-mp-pi.model';
+import { IProcessMsgTaskMpPi } from 'app/shared/model/process-msg-task-mp-pi.model';
 import { IProcessTemplateMpPi } from 'app/shared/model/process-template-mp-pi.model';
 
 export interface IProcessInstanceMpPi {
@@ -21,7 +21,7 @@ export interface IProcessInstanceMpPi {
   title?: string;
   processInstanceEvents?: IProcessInstanceEventMpPi[];
   formComponentValues?: IFormComponentValuesMpPi[];
-  ddMessages?: IDdMessageMpPi[];
+  processMsgTasks?: IProcessMsgTaskMpPi[];
   processTemplate?: IProcessTemplateMpPi;
 }
 
@@ -43,7 +43,7 @@ export class ProcessInstanceMpPi implements IProcessInstanceMpPi {
     public title?: string,
     public processInstanceEvents?: IProcessInstanceEventMpPi[],
     public formComponentValues?: IFormComponentValuesMpPi[],
-    public ddMessages?: IDdMessageMpPi[],
+    public processMsgTasks?: IProcessMsgTaskMpPi[],
     public processTemplate?: IProcessTemplateMpPi
   ) {}
 }
