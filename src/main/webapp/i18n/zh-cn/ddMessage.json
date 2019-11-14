@@ -20,8 +20,8 @@
       "receivingUser": "Receiving User",
       "title": "Title",
       "json": "Json",
+      "sendTime": "Send Time",
       "type": "Type",
-      "status": "Status",
       "processInstance": "Process Instance"
     }
   }

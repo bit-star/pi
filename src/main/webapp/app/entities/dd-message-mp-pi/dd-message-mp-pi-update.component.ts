@@ -5,6 +5,8 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IDdMessageMpPi, DdMessageMpPi } from 'app/shared/model/dd-message-mp-pi.model';
 import { DdMessageMpPiService } from './dd-message-mp-pi.service';
@@ -26,8 +28,8 @@ export class DdMessageMpPiUpdateComponent implements OnInit {
     receivingUser: [],
     title: [],
     json: [],
+    sendTime: [],
     type: [],
-    status: [],
     processInstance: []
   });
 
@@ -59,8 +61,8 @@ export class DdMessageMpPiUpdateComponent implements OnInit {
       receivingUser: ddMessage.receivingUser,
       title: ddMessage.title,
       json: ddMessage.json,
+      sendTime: ddMessage.sendTime != null ? ddMessage.sendTime.format(DATE_TIME_FORMAT) : null,
       type: ddMessage.type,
-      status: ddMessage.status,
       processInstance: ddMessage.processInstance
     });
   }
@@ -87,8 +89,8 @@ export class DdMessageMpPiUpdateComponent implements OnInit {
       receivingUser: this.editForm.get(['receivingUser']).value,
       title: this.editForm.get(['title']).value,
       json: this.editForm.get(['json']).value,
+      sendTime: this.editForm.get(['sendTime']).value != null ? moment(this.editForm.get(['sendTime']).value, DATE_TIME_FORMAT) : undefined,
       type: this.editForm.get(['type']).value,
-      status: this.editForm.get(['status']).value,
       processInstance: this.editForm.get(['processInstance']).value
     };
   }

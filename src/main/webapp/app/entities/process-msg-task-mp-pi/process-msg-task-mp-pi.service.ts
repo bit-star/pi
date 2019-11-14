@@ -8,41 +8,41 @@ import { map } from 'rxjs/operators';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
-import { IDdMessageMpPi } from 'app/shared/model/dd-message-mp-pi.model';
+import { IProcessMsgTaskMpPi } from 'app/shared/model/process-msg-task-mp-pi.model';
 
-type EntityResponseType = HttpResponse<IDdMessageMpPi>;
-type EntityArrayResponseType = HttpResponse<IDdMessageMpPi[]>;
+type EntityResponseType = HttpResponse<IProcessMsgTaskMpPi>;
+type EntityArrayResponseType = HttpResponse<IProcessMsgTaskMpPi[]>;
 
 @Injectable({ providedIn: 'root' })
-export class DdMessageMpPiService {
-  public resourceUrl = SERVER_API_URL + 'api/dd-messages';
+export class ProcessMsgTaskMpPiService {
+  public resourceUrl = SERVER_API_URL + 'api/process-msg-tasks';
 
   constructor(protected http: HttpClient) {}
 
-  create(ddMessage: IDdMessageMpPi): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(ddMessage);
+  create(processMsgTask: IProcessMsgTaskMpPi): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClient(processMsgTask);
     return this.http
-      .post<IDdMessageMpPi>(this.resourceUrl, copy, { observe: 'response' })
+      .post<IProcessMsgTaskMpPi>(this.resourceUrl, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
-  update(ddMessage: IDdMessageMpPi): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(ddMessage);
+  update(processMsgTask: IProcessMsgTaskMpPi): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClient(processMsgTask);
     return this.http
-      .put<IDdMessageMpPi>(this.resourceUrl, copy, { observe: 'response' })
+      .put<IProcessMsgTaskMpPi>(this.resourceUrl, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
   find(id: number): Observable<EntityResponseType> {
     return this.http
-      .get<IDdMessageMpPi>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+      .get<IProcessMsgTaskMpPi>(`${this.resourceUrl}/${id}`, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http
-      .get<IDdMessageMpPi[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .get<IProcessMsgTaskMpPi[]>(this.resourceUrl, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
@@ -50,24 +50,24 @@ export class DdMessageMpPiService {
     return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
-  protected convertDateFromClient(ddMessage: IDdMessageMpPi): IDdMessageMpPi {
-    const copy: IDdMessageMpPi = Object.assign({}, ddMessage, {
-      sendTime: ddMessage.sendTime != null && ddMessage.sendTime.isValid() ? ddMessage.sendTime.toJSON() : null
+  protected convertDateFromClient(processMsgTask: IProcessMsgTaskMpPi): IProcessMsgTaskMpPi {
+    const copy: IProcessMsgTaskMpPi = Object.assign({}, processMsgTask, {
+      executeTime: processMsgTask.executeTime != null && processMsgTask.executeTime.isValid() ? processMsgTask.executeTime.toJSON() : null
     });
     return copy;
   }
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.sendTime = res.body.sendTime != null ? moment(res.body.sendTime) : null;
+      res.body.executeTime = res.body.executeTime != null ? moment(res.body.executeTime) : null;
     }
     return res;
   }
 
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
-      res.body.forEach((ddMessage: IDdMessageMpPi) => {
-        ddMessage.sendTime = ddMessage.sendTime != null ? moment(ddMessage.sendTime) : null;
+      res.body.forEach((processMsgTask: IProcessMsgTaskMpPi) => {
+        processMsgTask.executeTime = processMsgTask.executeTime != null ? moment(processMsgTask.executeTime) : null;
       });
     }
     return res;
