@@ -39,9 +39,6 @@ public class ProcessInstance implements Serializable {
     @Column(name = "finish_time")
     private Instant finishTime;
 
-    @Column(name = "form_component_values")
-    private String formComponentValues;
-
     @Column(name = "operation_records")
     private String operationRecords;
 
@@ -154,19 +151,6 @@ public class ProcessInstance implements Serializable {
 
     public void setFinishTime(Instant finishTime) {
         this.finishTime = finishTime;
-    }
-
-    public String getFormComponentValues() {
-        return formComponentValues;
-    }
-
-    public ProcessInstance formComponentValues(String formComponentValues) {
-        this.formComponentValues = formComponentValues;
-        return this;
-    }
-
-    public void setFormComponentValues(String formComponentValues) {
-        this.formComponentValues = formComponentValues;
     }
 
     public String getOperationRecords() {
@@ -387,7 +371,6 @@ public class ProcessInstance implements Serializable {
             ", businessId='" + getBusinessId() + "'" +
             ", createTime='" + getCreateTime() + "'" +
             ", finishTime='" + getFinishTime() + "'" +
-            ", formComponentValues='" + getFormComponentValues() + "'" +
             ", operationRecords='" + getOperationRecords() + "'" +
             ", originatorDeptId='" + getOriginatorDeptId() + "'" +
             ", originatorDeptName='" + getOriginatorDeptName() + "'" +

@@ -21,7 +21,6 @@
       "businessId": "Business Id",
       "createTime": "Create Time",
       "finishTime": "Finish Time",
-      "formComponentValues": "Form Component Values",
       "operationRecords": "Operation Records",
       "originatorDeptId": "Originator Dept Id",
       "originatorDeptName": "Originator Dept Name",

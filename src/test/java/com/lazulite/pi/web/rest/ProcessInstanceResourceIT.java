@@ -51,9 +51,6 @@ public class ProcessInstanceResourceIT {
     private static final Instant DEFAULT_FINISH_TIME = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_FINISH_TIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_FORM_COMPONENT_VALUES = "AAAAAAAAAA";
-    private static final String UPDATED_FORM_COMPONENT_VALUES = "BBBBBBBBBB";
-
     private static final String DEFAULT_OPERATION_RECORDS = "AAAAAAAAAA";
     private static final String UPDATED_OPERATION_RECORDS = "BBBBBBBBBB";
 
@@ -128,7 +125,6 @@ public class ProcessInstanceResourceIT {
             .businessId(DEFAULT_BUSINESS_ID)
             .createTime(DEFAULT_CREATE_TIME)
             .finishTime(DEFAULT_FINISH_TIME)
-            .formComponentValues(DEFAULT_FORM_COMPONENT_VALUES)
             .operationRecords(DEFAULT_OPERATION_RECORDS)
             .originatorDeptId(DEFAULT_ORIGINATOR_DEPT_ID)
             .originatorDeptName(DEFAULT_ORIGINATOR_DEPT_NAME)
@@ -152,7 +148,6 @@ public class ProcessInstanceResourceIT {
             .businessId(UPDATED_BUSINESS_ID)
             .createTime(UPDATED_CREATE_TIME)
             .finishTime(UPDATED_FINISH_TIME)
-            .formComponentValues(UPDATED_FORM_COMPONENT_VALUES)
             .operationRecords(UPDATED_OPERATION_RECORDS)
             .originatorDeptId(UPDATED_ORIGINATOR_DEPT_ID)
             .originatorDeptName(UPDATED_ORIGINATOR_DEPT_NAME)
@@ -189,7 +184,6 @@ public class ProcessInstanceResourceIT {
         assertThat(testProcessInstance.getBusinessId()).isEqualTo(DEFAULT_BUSINESS_ID);
         assertThat(testProcessInstance.getCreateTime()).isEqualTo(DEFAULT_CREATE_TIME);
         assertThat(testProcessInstance.getFinishTime()).isEqualTo(DEFAULT_FINISH_TIME);
-        assertThat(testProcessInstance.getFormComponentValues()).isEqualTo(DEFAULT_FORM_COMPONENT_VALUES);
         assertThat(testProcessInstance.getOperationRecords()).isEqualTo(DEFAULT_OPERATION_RECORDS);
         assertThat(testProcessInstance.getOriginatorDeptId()).isEqualTo(DEFAULT_ORIGINATOR_DEPT_ID);
         assertThat(testProcessInstance.getOriginatorDeptName()).isEqualTo(DEFAULT_ORIGINATOR_DEPT_NAME);
@@ -236,7 +230,6 @@ public class ProcessInstanceResourceIT {
             .andExpect(jsonPath("$.[*].businessId").value(hasItem(DEFAULT_BUSINESS_ID)))
             .andExpect(jsonPath("$.[*].createTime").value(hasItem(DEFAULT_CREATE_TIME.toString())))
             .andExpect(jsonPath("$.[*].finishTime").value(hasItem(DEFAULT_FINISH_TIME.toString())))
-            .andExpect(jsonPath("$.[*].formComponentValues").value(hasItem(DEFAULT_FORM_COMPONENT_VALUES)))
             .andExpect(jsonPath("$.[*].operationRecords").value(hasItem(DEFAULT_OPERATION_RECORDS)))
             .andExpect(jsonPath("$.[*].originatorDeptId").value(hasItem(DEFAULT_ORIGINATOR_DEPT_ID)))
             .andExpect(jsonPath("$.[*].originatorDeptName").value(hasItem(DEFAULT_ORIGINATOR_DEPT_NAME)))
@@ -263,7 +256,6 @@ public class ProcessInstanceResourceIT {
             .andExpect(jsonPath("$.businessId").value(DEFAULT_BUSINESS_ID))
             .andExpect(jsonPath("$.createTime").value(DEFAULT_CREATE_TIME.toString()))
             .andExpect(jsonPath("$.finishTime").value(DEFAULT_FINISH_TIME.toString()))
-            .andExpect(jsonPath("$.formComponentValues").value(DEFAULT_FORM_COMPONENT_VALUES))
             .andExpect(jsonPath("$.operationRecords").value(DEFAULT_OPERATION_RECORDS))
             .andExpect(jsonPath("$.originatorDeptId").value(DEFAULT_ORIGINATOR_DEPT_ID))
             .andExpect(jsonPath("$.originatorDeptName").value(DEFAULT_ORIGINATOR_DEPT_NAME))
@@ -300,7 +292,6 @@ public class ProcessInstanceResourceIT {
             .businessId(UPDATED_BUSINESS_ID)
             .createTime(UPDATED_CREATE_TIME)
             .finishTime(UPDATED_FINISH_TIME)
-            .formComponentValues(UPDATED_FORM_COMPONENT_VALUES)
             .operationRecords(UPDATED_OPERATION_RECORDS)
             .originatorDeptId(UPDATED_ORIGINATOR_DEPT_ID)
             .originatorDeptName(UPDATED_ORIGINATOR_DEPT_NAME)
@@ -324,7 +315,6 @@ public class ProcessInstanceResourceIT {
         assertThat(testProcessInstance.getBusinessId()).isEqualTo(UPDATED_BUSINESS_ID);
         assertThat(testProcessInstance.getCreateTime()).isEqualTo(UPDATED_CREATE_TIME);
         assertThat(testProcessInstance.getFinishTime()).isEqualTo(UPDATED_FINISH_TIME);
-        assertThat(testProcessInstance.getFormComponentValues()).isEqualTo(UPDATED_FORM_COMPONENT_VALUES);
         assertThat(testProcessInstance.getOperationRecords()).isEqualTo(UPDATED_OPERATION_RECORDS);
         assertThat(testProcessInstance.getOriginatorDeptId()).isEqualTo(UPDATED_ORIGINATOR_DEPT_ID);
         assertThat(testProcessInstance.getOriginatorDeptName()).isEqualTo(UPDATED_ORIGINATOR_DEPT_NAME);

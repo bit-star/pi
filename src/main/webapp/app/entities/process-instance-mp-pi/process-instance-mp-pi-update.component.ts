@@ -29,7 +29,6 @@ export class ProcessInstanceMpPiUpdateComponent implements OnInit {
     businessId: [],
     createTime: [],
     finishTime: [],
-    formComponentValues: [],
     operationRecords: [],
     originatorDeptId: [],
     originatorDeptName: [],
@@ -70,7 +69,6 @@ export class ProcessInstanceMpPiUpdateComponent implements OnInit {
       businessId: processInstance.businessId,
       createTime: processInstance.createTime != null ? processInstance.createTime.format(DATE_TIME_FORMAT) : null,
       finishTime: processInstance.finishTime != null ? processInstance.finishTime.format(DATE_TIME_FORMAT) : null,
-      formComponentValues: processInstance.formComponentValues,
       operationRecords: processInstance.operationRecords,
       originatorDeptId: processInstance.originatorDeptId,
       originatorDeptName: processInstance.originatorDeptName,
@@ -108,7 +106,6 @@ export class ProcessInstanceMpPiUpdateComponent implements OnInit {
         this.editForm.get(['createTime']).value != null ? moment(this.editForm.get(['createTime']).value, DATE_TIME_FORMAT) : undefined,
       finishTime:
         this.editForm.get(['finishTime']).value != null ? moment(this.editForm.get(['finishTime']).value, DATE_TIME_FORMAT) : undefined,
-      formComponentValues: this.editForm.get(['formComponentValues']).value,
       operationRecords: this.editForm.get(['operationRecords']).value,
       originatorDeptId: this.editForm.get(['originatorDeptId']).value,
       originatorDeptName: this.editForm.get(['originatorDeptName']).value,
