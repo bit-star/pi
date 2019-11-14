@@ -12,6 +12,7 @@
         "processInstanceMpPi": "Process Instance",
         "formComponentValuesMpPi": "Form Component Values",
         "ddMessageMpPi": "Dd Message",
+        "processMsgTaskMpPi": "Process Msg Task",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

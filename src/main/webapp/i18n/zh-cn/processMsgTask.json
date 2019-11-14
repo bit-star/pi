@@ -1,0 +1,27 @@
+{
+  "piApp": {
+    "processMsgTask": {
+      "home": {
+        "title": "Process Msg Tasks",
+        "createLabel": "创建新 Process Msg Task",
+        "createOrEditLabel": "创建或编辑 Process Msg Task",
+        "notFound": "No Process Msg Tasks found"
+      },
+      "created": "Process Msg Task {{ param }} 创建成功",
+      "updated": "Process Msg Task {{ param }} 更新成功",
+      "deleted": "Process Msg Task {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Process Msg Task {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Process Msg Task"
+      },
+      "receivingDepartment": "Receiving Department",
+      "receivingUser": "Receiving User",
+      "title": "Title",
+      "json": "Json",
+      "executeTime": "Execute Time",
+      "status": "Status"
+    }
+  }
+}

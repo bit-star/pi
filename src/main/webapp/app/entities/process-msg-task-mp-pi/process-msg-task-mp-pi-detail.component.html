@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="processMsgTask">
+            <h2><span jhiTranslate="piApp.processMsgTask.detail.title">Process Msg Task</span> {{processMsgTask.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="piApp.processMsgTask.receivingDepartment">Receiving Department</span></dt>
+                <dd>
+                    <span>{{processMsgTask.receivingDepartment}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processMsgTask.receivingUser">Receiving User</span></dt>
+                <dd>
+                    <span>{{processMsgTask.receivingUser}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processMsgTask.title">Title</span></dt>
+                <dd>
+                    <span>{{processMsgTask.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processMsgTask.json">Json</span></dt>
+                <dd>
+                    <span>{{processMsgTask.json}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processMsgTask.executeTime">Execute Time</span></dt>
+                <dd>
+                    <span>{{processMsgTask.executeTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="piApp.processMsgTask.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'piApp.MessageStatus.' + processMsgTask.status}}">{{processMsgTask.status}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/process-msg-task-mp-pi', processMsgTask.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

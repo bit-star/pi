@@ -30,6 +30,12 @@
                            formControlName="json"/>
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="piApp.ddMessage.sendTime" for="field_sendTime">Send Time</label>
+                    <div class="d-flex">
+                        <input id="field_sendTime" type="datetime-local" class="form-control" name="sendTime" formControlName="sendTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="piApp.ddMessage.type" for="field_type">Type</label>
                     <select class="form-control" name="type" formControlName="type" id="field_type">
                         <option value="ActionCard">{{'piApp.DdMessageType.ActionCard' | translate}}</option>
@@ -37,13 +43,6 @@
                         <option value="Oa">{{'piApp.DdMessageType.Oa' | translate}}</option>
                         <option value="Link">{{'piApp.DdMessageType.Link' | translate}}</option>
                         <option value="File">{{'piApp.DdMessageType.File' | translate}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="piApp.ddMessage.status" for="field_status">Status</label>
-                    <select class="form-control" name="status" formControlName="status" id="field_status">
-                        <option value="SentSuccessfully">{{'piApp.MessageStatus.SentSuccessfully' | translate}}</option>
-                        <option value="NotSentYet">{{'piApp.MessageStatus.NotSentYet' | translate}}</option>
                     </select>
                 </div>
 
