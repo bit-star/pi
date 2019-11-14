@@ -46,13 +46,23 @@ entity  FormComponentValues{
     extValue String
 }
 
+entity ProcessMsgTask{
+	receivingDepartment String,
+    receivingUser String,
+    title String,
+	json String,
+    executeTime Instant,
+    status MessageStatus
+}
+
+
 entity DdMessage {
     receivingDepartment String,
     receivingUser String,
     title String,
 	json String,
-    type DdMessageType,
-    status MessageStatus
+    sendTime Instant,
+    type DdMessageType
 }
 
 enum DdMessageType {
